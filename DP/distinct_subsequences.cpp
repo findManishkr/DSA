@@ -49,7 +49,10 @@ public:
 
     int fbu( string s, string t){
           vector < vector < usi >> tab( S+ 1,  vector < usi > ( T+  1, 0));
+             
 
+           // if t is empty and s is not then there is always a solution 
+           
             for( int i = 0; i <= S; i++)
             tab[i][T] = 1;
 
