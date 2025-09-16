@@ -10,48 +10,39 @@ https://leetcode.com/problems/replace-non-coprime-numbers-in-array/description/?
 
 #include <bits/stdc++.h>
 using namespace std;
-
 class Solution {
 public:
-    int gcd ( int a, int b){
-        if( a == 0 ) return b;
-        return gcd( b%a, a);
+    int gcd(int a, int b) {
+        if (a == 0)
+            return b;
+        return gcd(b % a, a);
     }
-    int lcm( int a, int b){
-        return ( a / gcd(a,b) )  * b;
-    }
+    int lcm(int a, int b) { return (a / gcd(a, b)) * b; }
     vector<int> replaceNonCoprimes(vector<int>& nums) {
-             int n = nums.size();
+        int n = nums.size();
 
-                stack < int > st;
-             
-               for( int i = 0; i < nums.size(); i++){
+        stack<int> st;
 
-                 if( !st.empty() ){
-                   
-                   if( gcd( st.top(), nums[i]) > 1 ){
-                        int x = lcm( st.top(), nums[i]);
-                        st.pop();
-                        st.push( x);
-                   }else if( gcd( st.top(), nums[i]) == 1 ) {
-                        st.push( nums[i]);
-                   }
+        for (int i = 0; i < n; i++) {
 
+            int x = nums[i];
 
+            while (!st.empty() && gcd(st.top(), x) > 1) {
 
-                 }else{
-                      st.push( nums[i]);
-                 }
+                x = lcm(st.top(), x);
+                st.pop();
+            }
 
-               }
+            st.push(x);
+        }
 
-                vector<int> ans;
-               while( !st.empty() ){
-                 ans.push_back(st.top());
-                  st.pop();
-               }
-                 reverse( ans.begin(), ans.end());
-               return ans;
+        vector<int> ans;
+        while (!st.empty()) {
+            ans.push_back(st.top());
+            st.pop();
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
     }
 };
 
