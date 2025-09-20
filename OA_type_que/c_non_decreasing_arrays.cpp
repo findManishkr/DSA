@@ -72,6 +72,9 @@ int main(int argc, char const *argv[]) { setupIO();
       
      memset( dp, -1, sizeof(dp));
 
+      /*
+          f(0,0) = f(1,0) + f( 1,1)
+          */
 
       ll ans = 0;
 
