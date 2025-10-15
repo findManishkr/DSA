@@ -67,7 +67,7 @@ public:
                 
                 hi = mid2 -1;
 
-            }else if( f2 < f1  ){
+            }else if( f2 <= f1  ){   // function f values can be equal at mid1 and mid2
                
                 lo = mid1 + 1; 
 
@@ -160,7 +160,7 @@ public:
        for all i belo [0,n-1];
 
 
-*/
+*/c
 
 /*
  
