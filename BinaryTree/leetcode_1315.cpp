@@ -1,3 +1,12 @@
+/*
+
+
+
+https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/editorial/
+ study the editorial
+ 
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
