@@ -59,6 +59,26 @@ public:
           return sum;
     }
 };
+
+  // Approach 2
+
+ bool IsLeaf( TreeNode* node ){
+    return (!node->left && !node->right);
+   }
+
+    int f( TreeNode* root , int currsum ){
+            if( !root ) return 0;
+
+            currsum = currsum * 10 + root->val;
+
+            if(  IsLeaf(root) ) return currsum;
+
+       return ( f(root->left,currsum) + f(root->right,currsum));
+    }
+    int sumNumbers(TreeNode* root) {
+        
+        return f(root, 0);
+    }
 int main(int argc, char const *argv[]) { setupIO();
 
 
