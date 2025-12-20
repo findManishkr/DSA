@@ -30,7 +30,9 @@ void setupIO() {
      ListNode(int x, ListNode *next) : val(x), next(next) {}
  };
 
-class Solution {
+ // one pass solution
+
+class Solution1 {
 public:
     int size_of_the_linkedList(ListNode* head) {
         int size = 0;
@@ -84,6 +86,70 @@ public:
         return head;
     }
 };
+
+// approach 2 -> one pass solution
+
+class Solution2 {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+
+         ListNode *ptr1 = head, *ptr2 = head;
+
+         // move ptr2 by ` n steps`
+
+          while(n--)
+          ptr2 = ptr2->next;
+
+         // if ptr2 == NULL, then node to be deleted is head node of the linkedlist
+
+         if( !ptr2 ){
+            ListNode* node_to_be_deleted = head;
+            head = head->next;
+            delete node_to_be_deleted;
+            return head;
+         } 
+
+         // else move both pointers 1 step untill `ptr2` reaches last node of the linkedlist
+
+         while( ptr2->next ){
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+         }
+
+         // now , next node of ptr1 is node to be deleted;
+
+         ListNode *node_to_be_deleted = ptr1->next;
+         ptr1->next = ptr1->next->next;      // unlink
+
+         delete node_to_be_deleted;
+
+        return head;
+    }
+};
+
+/*
+// write single pass solution
+
+1. // observe how single pass solution can be implemented, using slow and fast pointer
+
+ `node just before the node can be found by keeping two pointer having n distance b/w them`
+
+ [1] -> [2] -> [3] -> [4] -> [5]
+  |------n------|
+
+ [1] -> [2] -> [3] -> [4] -> [5]
+         |------n------|
+
+ [1] -> [2] -> [3] -> [4] -> [5]
+                |------n------|
+        
+ 
+
+ `clean code ` yeah!
+
+
+
+*/
 int main(int argc, char const *argv[]) { setupIO();
 
 
