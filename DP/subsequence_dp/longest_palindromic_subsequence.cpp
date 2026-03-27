@@ -39,6 +39,34 @@ public:
     }
 };
 
+class Solution2 {
+public:
+    int longestPalindromeSubseq(string s) {
+          int n = s.size();
+
+          vector<vector< int>>dp(n+1, vector<int>(n+1, 0));
+
+                // for( int i = 0; i < n; i++)
+                // dp[i][i] = 1;
+           /*
+
+           as dp[x][x] = 1 
+
+
+
+           */
+
+            for( int len = 2; len <= n; len++){
+                 for( int i = 0; i <  n - len + 1; i++){
+                   int j = i + len -1;
+
+                     dp[i][j] = s[i] == s[j] ? 2 + dp[i+1][j-1] : max( dp[i+1][j], dp[i][j-1]);
+                 }
+            }
+            return dp[0][n-1];
+    }
+};
+
 int main(int argc, char const *argv[]) { setupIO();
 
 
