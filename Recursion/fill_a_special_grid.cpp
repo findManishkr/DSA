@@ -1,3 +1,14 @@
+/*
+
+
+https://leetcode.com/problems/fill-a-special-grid/
+
+
+
+*/
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -63,3 +74,58 @@ int main(int argc, char const *argv[]) { setupIO();
 
     return 0;
 }
+
+/*
+
+# time complexity
+
+
+Example
+
+T(n)=T(n−1)+4n
+
+Expand
+4^n + 4n^−1 + 4n^−2 + ⋯
+
+Largest term dominates.
+
+Answer
+
+O(4^n) 
+
+
+tc = O(4^n)
+
+
+
+# space complexity
+
+f(3)
+│
+├── f(2)
+│   │
+│   ├── f(1)
+│   │
+│   └── creates 2×2 matrix
+│
+└── creates 4×4 matrix
+
+
+At the deepest point after recursion unwinds, the matrices simultaneously alive are
+
+1×1,2×2,4×4,8×8,…,2n×2n  = 1 , 4 , 4^2 ... 4^n  
+
+sc = 1 + 4 + ... 4^n = (4 * (4^n-1))/3;
+
+which is order of 4^n
+
+sc = 0(4^n)
+
+
+Hence 
+
+tc = O(4^n)
+sc = o(4^n)
+
+
+*/
